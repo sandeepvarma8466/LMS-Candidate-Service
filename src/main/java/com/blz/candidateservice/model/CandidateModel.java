@@ -33,8 +33,8 @@ public class CandidateModel {
     private String candidateStatus;
     private LocalDateTime creationTimeStamp;
     private LocalDateTime updatedTimeStamp;
-    /*@OneToOne
-    private TechStackModel techStackEntity;*/
+
+    private Long techStackEntity;
 
     public CandidateModel(CandidateDTO candidateDTO) {
         this.cicId = candidateDTO.getCicId();

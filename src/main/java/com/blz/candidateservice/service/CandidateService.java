@@ -24,7 +24,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public CandidateModel addCandidate(CandidateDTO candidateDTO, String token) {
-        boolean isCandidatePresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" +
+        boolean isCandidatePresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" +
                 token, Boolean.class);
         if (isCandidatePresent) {
             CandidateModel candidateModel = new CandidateModel(candidateDTO);
@@ -39,7 +39,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public CandidateModel updateCandidate(Long id, CandidateDTO candidateDTO, String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             Optional<CandidateModel> isCandidatePresent = candidateRepository.findById(id);
@@ -73,7 +73,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public List<CandidateModel> getAllCandidates(String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             List<CandidateModel> checkData = candidateRepository.findAll();
@@ -87,7 +87,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public CandidateModel deleteCandidate(Long id, String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             Optional<CandidateModel> isCandidatePresent = candidateRepository.findById(id);
@@ -105,7 +105,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public List<CandidateModel> getCandidateByStatus(String status, String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             List<CandidateModel> isStatusPresent = candidateRepository.findByStatusEqualsIgnoreCase(status);
@@ -119,7 +119,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public CandidateModel changeStatus(Long id, String status, String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             Optional<CandidateModel> isIdPresent = candidateRepository.findById(id);
@@ -138,7 +138,7 @@ public class CandidateService implements ICandidateService {
 
     @Override
     public long statusCount(String status, String token) {
-        boolean isUserPresent = restTemplate.getForObject("http://localhost:8068/adminmodule/validateuser/" + token,
+        boolean isUserPresent = restTemplate.getForObject("http://admin-service:8068/adminmodule/validateuser/" + token,
                 Boolean.class);
         if (isUserPresent) {
             List<CandidateModel> isStatusPresent = candidateRepository.findByStatusEqualsIgnoreCase(status);
